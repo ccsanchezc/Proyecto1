@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Consulting Rooms</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Location</th>
+      <th>Typeroom</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @consulting_rooms.each do |consulting_room| %>
+      <tr>
+        <td><%= consulting_room.name %></td>
+        <td><%= consulting_room.location %></td>
+        <td><%= consulting_room.typeroom %></td>
+        <td><%= link_to 'Show', consulting_room %></td>
+        <td><%= link_to 'Edit', edit_consulting_room_path(consulting_room) %></td>
+        <td><%= link_to 'Destroy', consulting_room, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Consulting Room', new_consulting_room_path %>

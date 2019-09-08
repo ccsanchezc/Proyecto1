@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @consulting_room.name %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @consulting_room.location %>
+</p>
+
+<p>
+  <strong>Typeroom:</strong>
+  <%= @consulting_room.typeroom %>
+</p>
+
+<%= link_to 'Edit', edit_consulting_room_path(@consulting_room) %> |
+<%= link_to 'Back', consulting_rooms_path %>

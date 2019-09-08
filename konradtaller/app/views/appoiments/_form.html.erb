@@ -1,0 +1,47 @@
+<%= form_with(model: appoiment, local: true) do |form| %>
+  <% if appoiment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(appoiment.errors.count, "error") %> prohibited this appoiment from being saved:</h2>
+
+      <ul>
+        <% appoiment.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :consulting_room_id %>
+    <%= form.text_field :consulting_room_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :patient_id %>
+    <%= form.text_field :patient_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :doctor_id %>
+    <%= form.text_field :doctor_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :begindate %>
+    <%= form.datetime_select :begindate %>
+  </div>
+
+  <div class="field">
+    <%= form.label :enddate %>
+    <%= form.datetime_select :enddate %>
+  </div>
+
+  <div class="field">
+    <%= form.label :comment %>
+    <%= form.text_field :comment %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

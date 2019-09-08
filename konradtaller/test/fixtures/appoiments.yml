@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  consulting_room: one
+  patient: one
+  doctor: one
+  begindate: 2019-09-05 12:58:09
+  enddate: 2019-09-05 12:58:09
+  comment: MyString
+
+two:
+  consulting_room: two
+  patient: two
+  doctor: two
+  begindate: 2019-09-05 12:58:09
+  enddate: 2019-09-05 12:58:09
+  comment: MyString

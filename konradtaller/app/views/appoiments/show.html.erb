@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Consulting room:</strong>
+  <%= @appoiment.consulting_room_id %>
+</p>
+
+<p>
+  <strong>Patient:</strong>
+  <%= @appoiment.patient_id %>
+</p>
+
+<p>
+  <strong>Doctor:</strong>
+  <%= @appoiment.doctor_id %>
+</p>
+
+<p>
+  <strong>Begindate:</strong>
+  <%= @appoiment.begindate %>
+</p>
+
+<p>
+  <strong>Enddate:</strong>
+  <%= @appoiment.enddate %>
+</p>
+
+<p>
+  <strong>Comment:</strong>
+  <%= @appoiment.comment %>
+</p>
+
+<%= link_to 'Edit', edit_appoiment_path(@appoiment) %> |
+<%= link_to 'Back', appoiments_path %>
