@@ -1,6 +1,11 @@
  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   Rails.application.routes.draw do
   root 'home#index'
+  resources :appoiments
+  resources :consulting_rooms
+  resources :doctors
+  resources :professions
+  resources :patients
   
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
@@ -13,12 +18,7 @@
   get 'sessions/new'
   get 'sessions/create'
   get 'sessions/destroy' 
-  resources :appoiments
-  resources :consulting_rooms
-  resources :doctors
-  resources :professions
-  resources :patients
-  resources :users
+  
   
  
   
