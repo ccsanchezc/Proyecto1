@@ -55,6 +55,8 @@ class ProfessionsController < ApplicationController
   # PATCH/PUT /professions/1
   # PATCH/PUT /professions/1.json
   def update
+  @sessi = session[:logged]	
+	if ( @sessi == true )
     respond_to do |format|
       if @profession.update(profession_params)
         format.html { redirect_to @profession, notice: 'Profession was successfully updated.' }
@@ -64,16 +66,24 @@ class ProfessionsController < ApplicationController
         format.json { render json: @profession.errors, status: :unprocessable_entity }
       end
     end
+	else 	
+	redirect_to "/login"	
+	end
   end
 
   # DELETE /professions/1
   # DELETE /professions/1.json
   def destroy
+  @sessi = session[:logged]	
+	if ( @sessi == true )
     @profession.destroy
     respond_to do |format|
       format.html { redirect_to professions_url, notice: 'Profession was successfully destroyed.' }
       format.json { head :no_content }
     end
+	else 	
+	redirect_to "/login"	
+	end
   end
 
   private

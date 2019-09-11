@@ -3,8 +3,14 @@
 <h1>Doctors</h1>
 <% if current_user %>
   Logged in as <%= current_user.email %>.
+  
+  <div class="topnav">
+  <a class="active" href="/patients">Patient</a>
+  <a href="/doctors">Doctor</a>
+  <a href="/appoiments">Apointment</a>
+  <a href="/consulting_rooms">Consulting Room</a>
   <%= link_to "Log Out", logout_path %>
- 
+</div>
 <% end %>
 <table>
   <thead>

@@ -4,7 +4,12 @@ class AppoimentsController < ApplicationController
   # GET /appoiments
   # GET /appoiments.json
   def index
+  @sessi = session[:logged]	
+	if ( @sessi == true )
     @appoiments = Appoiment.all
+	else 	
+	redirect_to "/login"	
+	end
   end
 
   # GET /appoiments/1
@@ -14,7 +19,12 @@ class AppoimentsController < ApplicationController
 
   # GET /appoiments/new
   def new
+  @sessi = session[:logged]	
+	if ( @sessi == true )
     @appoiment = Appoiment.new
+	else 	
+	redirect_to "/login"	
+	end
   end
 
   # GET /appoiments/1/edit
@@ -24,6 +34,8 @@ class AppoimentsController < ApplicationController
   # POST /appoiments
   # POST /appoiments.json
   def create
+  @sessi = session[:logged]	
+	if ( @sessi == true )
     @appoiment = Appoiment.new(appoiment_params)
 
     respond_to do |format|
@@ -35,11 +47,16 @@ class AppoimentsController < ApplicationController
         format.json { render json: @appoiment.errors, status: :unprocessable_entity }
       end
     end
+	else 	
+	redirect_to "/login"	
+	end
   end
 
   # PATCH/PUT /appoiments/1
   # PATCH/PUT /appoiments/1.json
   def update
+  @sessi = session[:logged]	
+	if ( @sessi == true )
     respond_to do |format|
       if @appoiment.update(appoiment_params)
         format.html { redirect_to @appoiment, notice: 'Appoiment was successfully updated.' }
@@ -49,16 +66,24 @@ class AppoimentsController < ApplicationController
         format.json { render json: @appoiment.errors, status: :unprocessable_entity }
       end
     end
+	else 	
+	redirect_to "/login"	
+	end
   end
 
   # DELETE /appoiments/1
   # DELETE /appoiments/1.json
   def destroy
+  @sessi = session[:logged]	
+	if ( @sessi == true )
     @appoiment.destroy
     respond_to do |format|
       format.html { redirect_to appoiments_url, notice: 'Appoiment was successfully destroyed.' }
       format.json { head :no_content }
     end
+	else 	
+	redirect_to "/login"	
+	end
   end
 
   private
