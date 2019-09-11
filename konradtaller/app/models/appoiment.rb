@@ -6,6 +6,8 @@ class Appoiment < ApplicationRecord
   belongs_to :consulting_room
   belongs_to :patient
   belongs_to :doctor  
+  
+  scope :recent, -> {order(:begindate , :asc)}
 
 
 def no_reservation_overlap
