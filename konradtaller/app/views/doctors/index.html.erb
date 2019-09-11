@@ -1,7 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Doctors</h1>
-
+<% if current_user %>
+  Logged in as <%= current_user.email %>.
+  <%= link_to "Log Out", logout_path %>
+ 
+<% end %>
 <table>
   <thead>
     <tr>

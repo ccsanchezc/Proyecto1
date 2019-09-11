@@ -4,7 +4,12 @@ class DoctorsController < ApplicationController
   # GET /doctors
   # GET /doctors.json
   def index
+  @sessi = session[:logged]
+	if ( @sessi == true )
     @doctors = Doctor.all
+	else
+	redirect_to "/login"
+	end
   end
 
   # GET /doctors/1
@@ -14,7 +19,12 @@ class DoctorsController < ApplicationController
 
   # GET /doctors/new
   def new
+  @sessi = session[:logged]
+	if ( @sessi == true )
     @doctor = Doctor.new
+	else
+		redirect_to "/login"
+	end
   end
 
   # GET /doctors/1/edit
@@ -24,6 +34,10 @@ class DoctorsController < ApplicationController
   # POST /doctors
   # POST /doctors.json
   def create
+    @sessi = session[:logged]
+	if ( @sessi == true )
+					
+		
     @doctor = Doctor.new(doctor_params)
 
     respond_to do |format|
@@ -34,7 +48,10 @@ class DoctorsController < ApplicationController
         format.html { render :new }
         format.json { render json: @doctor.errors, status: :unprocessable_entity }
       end
+	  else
+	  redirect_to "/login"
     end
+	
   end
 
   # PATCH/PUT /doctors/1
@@ -71,4 +88,5 @@ class DoctorsController < ApplicationController
     def doctor_params
       params.require(:doctor).permit(:document, :name, :lastname, :phone, :profession_id)
     end
+	end
 end

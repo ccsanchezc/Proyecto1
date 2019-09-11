@@ -4,7 +4,12 @@ class ProfessionsController < ApplicationController
   # GET /professions
   # GET /professions.json
   def index
+   @sessi = session[:logged]	
+	if ( @sessi == true )
     @professions = Profession.all
+	else 	
+	redirect_to "/login"	
+	end
   end
 
   # GET /professions/1
@@ -14,7 +19,12 @@ class ProfessionsController < ApplicationController
 
   # GET /professions/new
   def new
+  @sessi = session[:logged]	
+	if ( @sessi == true )
     @profession = Profession.new
+	else 	
+	redirect_to "/login"	
+	end
   end
 
   # GET /professions/1/edit
@@ -24,17 +34,22 @@ class ProfessionsController < ApplicationController
   # POST /professions
   # POST /professions.json
   def create
+  @sessi = session[:logged]	
+	if ( @sessi == true )
     @profession = Profession.new(profession_params)
 
-    respond_to do |format|
-      if @profession.save
-        format.html { redirect_to @profession, notice: 'Profession was successfully created.' }
-        format.json { render :show, status: :created, location: @profession }
-      else
-        format.html { render :new }
-        format.json { render json: @profession.errors, status: :unprocessable_entity }
-      end
-    end
+		respond_to do |format|
+		  if @profession.save
+			format.html { redirect_to @profession, notice: 'Profession was successfully created.' }
+			format.json { render :show, status: :created, location: @profession }
+		  else
+			format.html { render :new }
+			format.json { render json: @profession.errors, status: :unprocessable_entity }
+		  end
+	 else 	
+	redirect_to "/login"	
+	end
+   end
   end
 
   # PATCH/PUT /professions/1
