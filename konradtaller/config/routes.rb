@@ -1,11 +1,19 @@
  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   Rails.application.routes.draw do
   root 'home#index'
-  resources :appoiments 
-  resources :consulting_rooms
-  resources :doctors
+  resources :appoiments do
+	resources :patients
+	end
+  resources :consulting_rooms do 
+	resources :appoiments
+	end
+  resources :doctors do 
+	resources :appoiments
+	end
   resources :professions
-  resources :patients
+  resources :patients do 
+	resources :appoiments
+	end
   
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
