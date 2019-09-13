@@ -6,7 +6,7 @@ class AppoimentsController < ApplicationController
   def index
   @sessi = session[:logged]	
 	if ( @sessi == true )
-    @appoiments = Appoiment.all
+    @appoiments = Appoiment.recent
 	else 	
 	redirect_to "/login"	
 	end
